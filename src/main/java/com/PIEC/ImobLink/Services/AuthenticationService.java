@@ -7,6 +7,7 @@ import com.PIEC.ImobLink.Jwt.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.PIEC.ImobLink.Entitys.User;
@@ -32,9 +33,13 @@ public class AuthenticationService {
     }
 
     public AuthResponse login(LoginRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
+        try {
+            authenticationManager.authenticate( //Quando sai do controller bate aqui
+                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()) //Entra aqui e volta pra linha de cima, é onde quebra toda vez
+            );
+        }catch (AuthenticationException e){
+            System.out.println(e.getMessage());
+        }
 
         var user = userRepository.findByEmail(request.getEmail());
 
