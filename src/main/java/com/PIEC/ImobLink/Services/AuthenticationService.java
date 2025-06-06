@@ -1,5 +1,6 @@
 package com.PIEC.ImobLink.Services;
 
+import Role.Role;
 import com.PIEC.ImobLink.DTOs.AuthResponse;
 import com.PIEC.ImobLink.DTOs.LoginRequest;
 import com.PIEC.ImobLink.DTOs.RegisterRequest;
@@ -26,10 +27,10 @@ public class AuthenticationService {
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(Role.ADMIN);
         userRepository.save(user);
 
-        String token = jwtUtil.generateToken(user.getEmail());
-        return new AuthResponse(token);
+        return new AuthResponse("Cadastrado com sucesso!");
     }
 
     public AuthResponse login(LoginRequest request) {
@@ -43,7 +44,7 @@ public class AuthenticationService {
 
         var user = userRepository.findByEmail(request.getEmail());
 
-        String token = jwtUtil.generateToken(String.valueOf(user));
+        String token = jwtUtil.generateToken(user.get().getEmail());
         return new AuthResponse(token);
     }
 }
