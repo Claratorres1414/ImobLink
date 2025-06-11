@@ -18,7 +18,11 @@ public class AdminController {
 
     @PostMapping("/promote")
     public ResponseEntity<?> promoteUser(@RequestBody PromoteRequest request) {
-        userService.promoteUser(request.getEmail());
+        try{
+            userService.promoteUser(request.getEmail());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         return ResponseEntity.ok("Usuário promovido a ADMIN com sucecsso!");
     }
 }
