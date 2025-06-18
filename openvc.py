@@ -9,11 +9,26 @@ def mostrar_imagem(caminho):
         print(f"Erro ao carregar a imagem: {caminho}")
         return False
 
+    # Redimensiona para 640x480
+    imagem = cv2.resize(imagem, (640, 480))
+
     cv2.imshow(f"Visualizando {caminho}", imagem)
     print(f"Pressione qualquer tecla para fechar a visualização de {caminho}")
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     return True
+
+def redimensionar_imagem(caminho, largura_alvo=1000):
+    imagem = cv2.imread(caminho)
+    if imagem is None:
+        return None
+
+    altura, largura = imagem.shape[:2]
+    proporcao = largura_alvo / float(largura)
+    nova_altura = int(altura * proporcao)
+    
+    return cv2.resize(imagem, (largura_alvo, nova_altura))
+
 
 def extrair_nome(resultados):
     texto_tudo = " ".join([r[1] for r in resultados])
@@ -45,16 +60,22 @@ def extrair_cpf(texto):
 
 def processar_documento(frente_path, verso_path):
     reader = easyocr.Reader(['pt', 'en'])
-    
-    # Exibir imagens com OpenCV
+
     if not mostrar_imagem(frente_path) or not mostrar_imagem(verso_path):
         print("Falha ao exibir imagens.")
         return None
 
-    frente_resultados = reader.readtext(frente_path, paragraph=True)
+    frente_img = redimensionar_imagem(frente_path)
+    verso_img = redimensionar_imagem(verso_path)
+
+    if frente_img is None or verso_img is None:
+        print("Erro ao redimensionar imagens.")
+        return None
+
+    frente_resultados = reader.readtext(frente_img, paragraph=True)
     frente_texto = " ".join([r[1] for r in frente_resultados])
 
-    verso_resultados = reader.readtext(verso_path, paragraph=True)
+    verso_resultados = reader.readtext(verso_img, paragraph=True)
     verso_texto = " ".join([r[1] for r in verso_resultados])
 
     texto_total = frente_texto + " " + verso_texto
@@ -71,10 +92,11 @@ def processar_documento(frente_path, verso_path):
 
 # === EXECUÇÃO PRINCIPAL ===
 if __name__ == "__main__":
-    frente = "frente.jpg"  # Imagem salva no disco
-    verso = "costa.jpg"    # Imagem salva no disco
+    frente = "frente.jpg"
+    verso = "costa.jpg"
 
     dados_extraidos = processar_documento(frente, verso)
     if dados_extraidos:
         print("\n📋 DADOS EXTRAÍDOS:")
         print(json.dumps(dados_extraidos, indent=4, ensure_ascii=False))
+
