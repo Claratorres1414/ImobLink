@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d14363b3-3558-4a5c-8b23-a5acae59097b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/BackEnd" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ImobLink" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2xilevEm5hW0lYkDe34grpcBDdJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build ImobLink.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ImobLinkApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/claratorres1414/Desktop/PIEC/PIEC-1/ImobLink&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ImobLinkApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="ImobLink.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.PIEC.ImobLink.ImobLinkApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d14363b3-3558-4a5c-8b23-a5acae59097b" name="Changes" comment="" />
+      <created>1748428873329</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748428873329</updated>
+      <workItem from="1748428874556" duration="6611000" />
+      <workItem from="1748612091674" duration="6322000" />
+      <workItem from="1748641037747" duration="1871000" />
+      <workItem from="1748684189211" duration="3982000" />
+      <workItem from="1748798257874" duration="2402000" />
+      <workItem from="1748888176421" duration="632000" />
+      <workItem from="1748906398754" duration="598000" />
+      <workItem from="1748988257067" duration="421000" />
+      <workItem from="1748991760299" duration="1625000" />
+      <workItem from="1749028983078" duration="491000" />
+      <workItem from="1749033663267" duration="1837000" />
+      <workItem from="1749039269948" duration="1581000" />
+      <workItem from="1749060892093" duration="560000" />
+      <workItem from="1749063420215" duration="1336000" />
+      <workItem from="1749155964233" duration="3286000" />
+      <workItem from="1749165255016" duration="599000" />
+      <workItem from="1749207274036" duration="598000" />
+      <workItem from="1749221942783" duration="3454000" />
+      <workItem from="1749239786512" duration="6864000" />
+      <workItem from="1749290996270" duration="6523000" />
+      <workItem from="1749310363594" duration="599000" />
+      <workItem from="1749561419790" duration="1825000" />
+      <workItem from="1749566160954" duration="599000" />
+      <workItem from="1749593717553" duration="599000" />
+      <workItem from="1749632110180" duration="599000" />
+      <workItem from="1749651707107" duration="1955000" />
+      <workItem from="1749677894684" duration="598000" />
+      <workItem from="1749750737910" duration="599000" />
+      <workItem from="1749754891988" duration="599000" />
+      <workItem from="1749822762312" duration="598000" />
+      <workItem from="1749852291817" duration="599000" />
+      <workItem from="1749938226730" duration="599000" />
+      <workItem from="1749985111018" duration="1661000" />
+      <workItem from="1750005097146" duration="598000" />
+      <workItem from="1750024935989" duration="598000" />
+      <workItem from="1750066318889" duration="598000" />
+      <workItem from="1750091488780" duration="4879000" />
+      <workItem from="1750111838070" duration="599000" />
+      <workItem from="1750169735677" duration="625000" />
+      <workItem from="1750184948960" duration="598000" />
+      <workItem from="1750194850797" duration="4000" />
+      <workItem from="1750243294462" duration="3057000" />
+      <workItem from="1750248462278" duration="13000" />
+      <workItem from="1750248479030" duration="44000" />
+      <workItem from="1750248524894" duration="9000" />
+      <workItem from="1750248591149" duration="64000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/PIEC/ImobLink/Services/CustomUserDetailsService.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
