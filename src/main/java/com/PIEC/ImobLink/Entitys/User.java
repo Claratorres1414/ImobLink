@@ -21,6 +21,12 @@ public class User {
     private Long id;
 
     @Column(nullable = false, unique = true)
+    private String cpf;
+
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)

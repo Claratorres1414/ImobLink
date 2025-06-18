@@ -18,6 +18,8 @@ public class AdminInitializer implements CommandLineRunner {
     public void run(String... args) {
         if(userRepository.findByEmail("supreme@gmail.com").isEmpty()){
             User superAdmin = new User();
+            superAdmin.setCpf("000");
+            superAdmin.setPhoneNumber("000");
             superAdmin.setName("Super Admin");
             superAdmin.setEmail("supreme@gmail.com");
             superAdmin.setPassword(passwordEncoder.encode("123456"));

@@ -24,6 +24,8 @@ public class AuthenticationService {
 
     public AuthResponse register(RegisterRequest request) {
         User user = new User();
+        user.setCpf(request.getCpf());
+        user.setPhoneNumber(request.getPhoneNumber());
         user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
