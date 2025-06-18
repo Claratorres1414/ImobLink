@@ -19,7 +19,7 @@ public class Post {
     private Long id;
 
     private String imageUrl;
-    private String caption;
+    private String description;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
