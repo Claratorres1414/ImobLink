@@ -5,8 +5,8 @@
 /out/
 
 # IntelliJ IDEA
-/.idea/
-/*.iml
+.idea/
+*.iml
 
 # Arquivos temporários do sistema
 .DS_Store
