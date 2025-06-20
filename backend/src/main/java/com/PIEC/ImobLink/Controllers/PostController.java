@@ -1,6 +1,7 @@
 package com.PIEC.ImobLink.Controllers;
 
 import com.PIEC.ImobLink.DTOs.PostRequest;
+import com.PIEC.ImobLink.DTOs.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -17,14 +18,14 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/create")
-    public ResponseEntity<Post> createPost(@RequestBody PostRequest postRequest, Authentication auth) {
-        Post post = postService.createPost(postRequest.getImageUrl(), postRequest.getDescription(), auth);
-        return ResponseEntity.ok(post);
+    public ResponseEntity<String> createPost(@RequestBody PostRequest postRequest, Authentication auth) {
+        String response = postService.createPost(postRequest.getImageUrl(), postRequest.getDescription(), auth);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/my-posts")
-    public ResponseEntity<List<Post>> getMyPosts(Authentication auth) {
-        List<Post> posts = postService.getPostsByUser(auth.getName());
+    public ResponseEntity<List<PostResponse>> getMyPosts(Authentication auth) {
+        List<PostResponse> posts = postService.getPostsByUser(auth.getName());
         return ResponseEntity.ok(posts);
     }
 }
