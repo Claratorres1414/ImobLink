@@ -1,6 +1,7 @@
 package com.PIEC.ImobLink.Services;
 
 import Role.Role;
+import com.PIEC.ImobLink.DTOs.UserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,11 @@ public class UserService {
         user.setRole(Role.ADMIN);
         userRepository.save(user);
         System.out.println("Usuário promovido com sucesso: " + email);
+    }
+
+    public UserDetails loadUser(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(email));
+        return new UserDetails(user);
     }
 }
