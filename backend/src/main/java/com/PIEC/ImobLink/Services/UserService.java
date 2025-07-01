@@ -32,4 +32,12 @@ public class UserService {
                 .orElseThrow(() -> new UsernameNotFoundException(email));
         return new UserDetails(user);
     }
+
+    public void setBio(String bio, String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException(email));
+        user.setBio(bio);
+        userRepository.save(user);
+        System.out.println("Bio setada com sucesso para o user: " + user.getName());
+    }
 }
