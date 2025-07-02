@@ -1,7 +1,6 @@
 package com.PIEC.ImobLink.Controllers;
 
-import com.PIEC.ImobLink.DTOs.PostRequest;
-import com.PIEC.ImobLink.DTOs.SetInfoRquest;
+import com.PIEC.ImobLink.DTOs.SetInfoRequest;
 import com.PIEC.ImobLink.Services.CustomUserDetailsService;
 import com.PIEC.ImobLink.Services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +35,7 @@ public class UserController {
     }
 
     @PatchMapping("/setInfo")
-    public void setBio(@RequestBody SetInfoRquest setRequest, Authentication authentication) {
+    public void setBio(@RequestBody SetInfoRequest setRequest, Authentication authentication) {
         String email = authentication.getName();
         userService.setBio(setRequest.getBio(), email);
     }

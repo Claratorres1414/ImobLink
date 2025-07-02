@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class SetInfoRquest {
+public class SetInfoRequest {
     private String bio;
 }
