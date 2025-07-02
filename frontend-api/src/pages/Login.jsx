@@ -8,8 +8,20 @@ function Login() {
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
 
+  
+
   const handleLogin = async (e) => {
     e.preventDefault();
+    
+    if (!emailOuCpf || !senha) {
+    setErro("Preencha todos os campos.");
+    return;
+  }
+
+  // Login fictício por enquanto
+  localStorage.setItem("token", "fake-token");
+  navigate("/home");
+
 
     try {
       const resposta = await fetch("http://localhost:3000/login", {
