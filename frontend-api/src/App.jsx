@@ -11,8 +11,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/perfil" element={<Perfil />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<RotaProtegida><Home /></RotaProtegida>} />
+        <Route path="/perfil" element={<RotaProtegida><Perfil /></RotaProtegida>} />
+
       </Routes>
     </BrowserRouter>
   );
