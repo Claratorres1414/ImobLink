@@ -18,7 +18,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String imageUrl;
+    private String imagePath;
+    private String imageType;
+
     private String description;
 
     @CreationTimestamp

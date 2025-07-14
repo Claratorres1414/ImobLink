@@ -15,7 +15,7 @@ public class PostResponse {
     private String createdBy;
 
     public PostResponse(Post post) {
-        this.imageUrl = post.getImageUrl();
+        this.imageUrl = "/api/posts/" + post.getId() + "/image";
         this.description = post.getDescription();
         this.createdAt = post.getCreatedAt();
         this.createdBy = post.getUser().getName();
