@@ -26,8 +26,9 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> createPost(@RequestPart("post") PostRequest postRequest, @RequestPart("image")MultipartFile image, Authentication auth) throws IOException {
-        String response = postService.createPost(image, postRequest.getDescription(), auth);
+    public ResponseEntity<String> createPost(@RequestParam("description") String description, @RequestParam("image")MultipartFile image, Authentication auth) throws IOException {
+        System.out.println("Recebi a imagem: " + image.getOriginalFilename());
+        String response = postService.createPost(image, description, auth);
         return ResponseEntity.ok(response);
     }
 
