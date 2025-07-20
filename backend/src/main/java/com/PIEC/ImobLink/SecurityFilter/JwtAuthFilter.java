@@ -1,6 +1,7 @@
 package com.PIEC.ImobLink.SecurityFilter;
 
 import com.PIEC.ImobLink.Jwt.JwtUtil;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -46,7 +47,17 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
 
         String jwt = authHeader.substring(7);
-        String userEmail = jwtUtil.extractEmail(jwt);
+        String userEmail = null;
+
+        try {
+            userEmail = jwtUtil.extractEmail(jwt);
+        } catch (ExpiredJwtException e) {
+            System.out.println("Token expirado!");
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // 401
+            response.getWriter().write("Token expirado. Faça login novamente.");
+            return; // Interrompe a requisição
+        }
+
 
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
