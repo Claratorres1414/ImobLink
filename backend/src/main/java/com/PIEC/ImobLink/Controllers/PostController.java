@@ -3,6 +3,7 @@ package com.PIEC.ImobLink.Controllers;
 import com.PIEC.ImobLink.DTOs.PostRequest;
 import com.PIEC.ImobLink.DTOs.PostResponse;
 import jakarta.annotation.Resource;
+import jakarta.servlet.ServletException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.MediaType;
@@ -36,6 +37,12 @@ public class PostController {
     public ResponseEntity<List<PostResponse>> getMyPosts(Authentication auth) {
         List<PostResponse> posts = postService.getPostsByUser(auth.getName());
         return ResponseEntity.ok(posts);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deletePost(@PathVariable Long id,  Authentication auth) throws ServletException {
+        String response = postService.deletePost(id, auth);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}/image")

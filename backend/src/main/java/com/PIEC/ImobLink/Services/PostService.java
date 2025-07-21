@@ -3,6 +3,7 @@ package com.PIEC.ImobLink.Services;
 import com.PIEC.ImobLink.DTOs.PostResponse;
 import com.PIEC.ImobLink.Entitys.User;
 import io.jsonwebtoken.io.IOException;
+import jakarta.servlet.ServletException;
 import jakarta.transaction.Transactional;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -55,6 +56,15 @@ public class PostService {
         postRepository.save(post);
 
         return "post created!";
+    }
+
+   public String deletePost(Long id, Authentication auth) throws IOException, ServletException {
+        String email = auth.getName();
+        userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        postRepository.delete(get(id));
+        return "post deleted!";
     }
 
     public List<PostResponse> getPostsByUser(String email) {
