@@ -1,5 +1,6 @@
 package com.PIEC.ImobLink.Services;
 
+import com.PIEC.ImobLink.DTOs.PostRequest;
 import com.PIEC.ImobLink.DTOs.PostResponse;
 import com.PIEC.ImobLink.Entitys.User;
 import io.jsonwebtoken.io.IOException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.PIEC.ImobLink.Entitys.Post;
 import com.PIEC.ImobLink.Repositorys.PostRepository;
 import com.PIEC.ImobLink.Repositorys.UserRepository;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.Files;
@@ -56,6 +58,20 @@ public class PostService {
         postRepository.save(post);
 
         return "post created!";
+    }
+
+    public PostResponse getPostById(@PathVariable Long id) throws ServletException {
+        Post post = postRepository.getReferenceById(id);
+        return new PostResponse(post);
+    }
+
+    public Post editPost(Long id, PostRequest newInfoPost, Authentication auth) throws ServletException {
+        String email = auth.getName();
+        userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Post post = postRepository.getReferenceById(id);
+        post.setDescription(newInfoPost.getDescription());
+        return postRepository.save(post);
     }
 
    public String deletePost(Long id, Authentication auth) throws IOException, ServletException {

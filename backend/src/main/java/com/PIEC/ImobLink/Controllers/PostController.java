@@ -2,6 +2,7 @@ package com.PIEC.ImobLink.Controllers;
 
 import com.PIEC.ImobLink.DTOs.PostRequest;
 import com.PIEC.ImobLink.DTOs.PostResponse;
+import com.PIEC.ImobLink.Repositorys.PostRepository;
 import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
+    private final PostRepository postRepository;
 
     @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> createPost(@RequestParam("description") String description, @RequestParam("image")MultipartFile image, Authentication auth) throws IOException {
@@ -43,6 +45,12 @@ public class PostController {
     public ResponseEntity<String> deletePost(@PathVariable Long id,  Authentication auth) throws ServletException {
         String response = postService.deletePost(id, auth);
         return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/edit/{id}")
+    public ResponseEntity<String> editPost(@PathVariable Long id, @RequestBody PostRequest newInforPost, Authentication auth) throws ServletException {
+        Post edited = postService.editPost(id, newInforPost, auth);
+        return ResponseEntity.ok("Editado com sucesso");
     }
 
     @GetMapping("/{id}/image")
