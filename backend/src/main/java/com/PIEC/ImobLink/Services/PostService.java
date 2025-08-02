@@ -65,6 +65,13 @@ public class PostService {
         return new PostResponse(post);
     }
 
+    public List<PostResponse> getFeed() {
+        return postRepository.findAllByOrderByCreatedAtDesc()
+                .stream()
+                .map(PostResponse::new)
+                .toList();
+    }
+
     public Post editPost(Long id, PostRequest newInfoPost, Authentication auth) throws ServletException {
         String email = auth.getName();
         userRepository.findByEmail(email)
