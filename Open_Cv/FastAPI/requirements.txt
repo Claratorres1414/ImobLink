@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+torch
+transformers
+requests
+python-dotenv
+Pillow
+opencv-python
+easyocr
