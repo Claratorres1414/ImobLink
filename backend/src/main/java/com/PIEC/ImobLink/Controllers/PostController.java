@@ -3,10 +3,11 @@ package com.PIEC.ImobLink.Controllers;
 import com.PIEC.ImobLink.DTOs.PostRequest;
 import com.PIEC.ImobLink.DTOs.PostResponse;
 import com.PIEC.ImobLink.Repositorys.PostRepository;
-import jakarta.annotation.Resource;
 import jakarta.servlet.ServletException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -14,7 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import com.PIEC.ImobLink.Entitys.Post;
 import com.PIEC.ImobLink.Services.PostService;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -54,17 +57,20 @@ public class PostController {
     }
 
     @GetMapping("/{id}/image")
-    public ResponseEntity<UrlResource> getImage(@PathVariable Long id) throws IOException {
+    public ResponseEntity<byte[]> getImage(@PathVariable Long id) throws IOException {
         Post post = postService.get(id);
-        Path path = Paths.get(post.getImagePath());
 
-        if (!Files.exists(path)) {
-            return ResponseEntity.notFound().build();
+        if (post.getImagePath() == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Imagem não encontrada");
         }
 
-        UrlResource file = new UrlResource(path.toUri());
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(post.getImageType()))
-                .body(file);
+        File imgFile = new File(post.getImagePath());
+        byte[] imageBytes = Files.readAllBytes(imgFile.toPath());
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+        headers.setContentLength(imageBytes.length);
+
+        return new ResponseEntity<>(imageBytes, headers, HttpStatus.OK);
     }
 }
