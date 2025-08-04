@@ -36,7 +36,7 @@ public class PostService {
     private String uploadDir;
 
     @Transactional
-    public String createPost(MultipartFile image, String description, Authentication auth) throws IOException, java.io.IOException {
+    public String createPost(MultipartFile image, String description, double price, String street, String avenue, Authentication auth) throws IOException, java.io.IOException {
         String email = auth.getName();
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
@@ -53,6 +53,9 @@ public class PostService {
         post.setImagePath(filePath.toString());
         post.setImagePath(image.getContentType());
         post.setDescription(description);
+        post.setPrice(price);
+        post.setStreet(street);
+        post.setAvenue(avenue);
         post.setUser(user);
 
         postRepository.save(post);
@@ -77,7 +80,18 @@ public class PostService {
         userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         Post post = postRepository.getReferenceById(id);
-        post.setDescription(newInfoPost.getDescription());
+        if (newInfoPost.getDescription() != null) {
+            post.setDescription(newInfoPost.getDescription());
+        }
+        if (newInfoPost.getPrice() != 0){
+            post.setPrice(newInfoPost.getPrice());
+        }
+        if (newInfoPost.getStreet() != null) {
+            post.setStreet(newInfoPost.getStreet());
+        }
+        if (newInfoPost.getAvenue() != null) {
+            post.setAvenue(newInfoPost.getAvenue());
+        }
         return postRepository.save(post);
     }
 

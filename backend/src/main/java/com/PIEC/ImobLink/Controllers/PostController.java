@@ -29,9 +29,9 @@ public class PostController {
     private final PostRepository postRepository;
 
     @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<String> createPost(@RequestParam("description") String description, @RequestParam("image")MultipartFile image, Authentication auth) throws IOException {
+    public ResponseEntity<String> createPost(@RequestParam("description") String description, @RequestParam("price") double price, @RequestParam("street") String street, @RequestParam("avenue") String avenue, @RequestParam("image")MultipartFile image, Authentication auth) throws IOException {
         System.out.println("Recebi a imagem: " + image.getOriginalFilename());
-        String response = postService.createPost(image, description, auth);
+        String response = postService.createPost(image, description, price, street, avenue, auth);
         return ResponseEntity.ok(response);
     }
 
@@ -48,8 +48,8 @@ public class PostController {
     }
 
     @PatchMapping("/edit/{id}")
-    public ResponseEntity<String> editPost(@PathVariable Long id, @RequestBody PostRequest newInforPost, Authentication auth) throws ServletException {
-        Post edited = postService.editPost(id, newInforPost, auth);
+    public ResponseEntity<String> editPost(@PathVariable Long id, @RequestBody PostRequest newInfoPost, Authentication auth) throws ServletException {
+        postService.editPost(id, newInfoPost, auth);
         return ResponseEntity.ok("Editado com sucesso");
     }
 

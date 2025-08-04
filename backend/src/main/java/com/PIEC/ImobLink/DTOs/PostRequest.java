@@ -8,5 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 public class PostRequest {
     private String description;
+    private double price;
+    private String street;
+    private String avenue;
     //private MultipartFile image;
 }

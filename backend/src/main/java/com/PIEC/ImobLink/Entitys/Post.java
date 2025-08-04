@@ -22,6 +22,9 @@ public class Post {
     private String imageType;
 
     private String description;
+    private double price;
+    private String street;
+    private String avenue;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
