@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
 
 function RotaProtegida({ children }) {
-  function RotaProtegida({ children }) {
-    const token = localStorage.getItem("token");
-    return token ? children : <Navigate to="/" />;
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/" replace />;
   }
-  
 
   return children;
 }

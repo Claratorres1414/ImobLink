@@ -1,21 +1,55 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Cadastro from "./pages/Cadastro";
-import Perfil from "./pages/Perfil";
 import Home from "./pages/Home";
+import Perfil from "./pages/Perfil";
+import PublicarPostagem from "./pages/PublicarPostagem";
+import MeusAnuncios from "./pages/MeusAnuncios";
 import RotaProtegida from "./components/RotaProtegida";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
+        {/* Rotas públicas */}
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
-        <Route path="/home" element={<RotaProtegida><Home /></RotaProtegida>} />
-        <Route path="/perfil" element={<RotaProtegida><Perfil /></RotaProtegida>} />
 
+        {/* Rotas protegidas */}
+        <Route
+          path="/home"
+          element={
+            <RotaProtegida>
+              <Home />
+            </RotaProtegida>
+          }
+        />
+        <Route
+          path="/perfil"
+          element={
+            <RotaProtegida>
+              <Perfil />
+            </RotaProtegida>
+          }
+        />
+        <Route
+          path="/publicar"
+          element={
+            <RotaProtegida>
+              <PublicarPostagem />
+            </RotaProtegida>
+          }
+        />
+        <Route
+          path="/meus-anuncios"
+          element={
+            <RotaProtegida>
+              <MeusAnuncios />
+            </RotaProtegida>
+          }
+        />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

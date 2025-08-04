@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-
 function DashboardLayout({ children }) {
   const navigate = useNavigate();
 
@@ -33,13 +32,13 @@ function DashboardLayout({ children }) {
         </div>
       </header>
 
-      {/* cnteudo com menu + principal */}
+      {/* Conteúdo com menu + principal */}
       <div className="flex flex-1">
-        {/*menu lateral */}
+        {/* Menu lateral */}
         <aside className="w-64 bg-white shadow-md p-4 flex flex-col justify-between md:flex">
           <nav className="space-y-4">
-            <a href="/home" className="block text-blue-700 font-semibold"> Imóveis</a>
-            <a href="#" className="block text-gray-700"> Meus Anúncios</a>
+            <a href="/home" className="block text-blue-700 font-semibold">Imóveis</a>
+            <a href="/meus-anuncios" className="block text-gray-700">Meus Anúncios</a>
           </nav>
           <button
             onClick={sair}
