@@ -40,3 +40,6 @@ async def processar_documento_api(frente: UploadFile = File(...), verso: UploadF
         os.remove(frente_path)
         os.remove(verso_path)
         return JSONResponse(content={"erro": str(e)}, status_code=500)
+#python -m uvicorn main:app --reload
+#http://127.0.0.1:8000/docs
+
