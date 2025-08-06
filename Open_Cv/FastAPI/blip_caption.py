@@ -7,7 +7,29 @@ from transformers import BlipProcessor, BlipForConditionalGeneration
 
 # Carrega variáveis de ambiente (para usar o token)
 load_dotenv()
-HUGGINGFACE_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
+
+import requests
+
+def obter_token():
+    try:
+        resposta = requests.get("http://localhost:8080/token?auth=segredo123")
+        if resposta.status_code == 200:
+            data = resposta.json()
+            return data.get("token")
+        else:
+            print(f"Erro ao obter token: {resposta.status_code}")
+            return None
+    except Exception as e:
+        print(f"Erro de conexão ao obter token: {e}")
+        return None
+
+
+HUGGINGFACE_API_TOKEN = obter_token()
+
+if not HUGGINGFACE_API_TOKEN:
+    raise RuntimeError("Token não obtido da API Java")
+
+
 
 # Inicializa o modelo e processador BLIP
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
